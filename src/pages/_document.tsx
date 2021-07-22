@@ -1,5 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
+import { CssBaseline } from '@material-ui/core';
+
 export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
@@ -15,6 +17,7 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
+          <CssBaseline />
           <Main />
           <NextScript />
         </body>
