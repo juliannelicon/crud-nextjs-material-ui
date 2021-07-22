@@ -1,3 +1,5 @@
+import { Box } from '@material-ui/core';
+
 export default function Home(): JSX.Element {
-  return <h1>Hello</h1>;
+  return <Box>teste</Box>;
 }
