@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   Box,
   Paper,
@@ -23,6 +25,8 @@ import {
 } from '@material-ui/icons';
 
 import { useUsers } from '../context/UseUsersContext';
+
+import { Modal } from '../components/Modal';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -69,6 +73,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Home(): JSX.Element {
   const { users } = useUsers();
 
+  const [open, setOpen] = useState(false);
+
+  const handleToggleModal = () => setOpen(!open);
+
   return (
     <Paper elevation={3}>
       <Box p={2}>
@@ -89,16 +97,23 @@ export default function Home(): JSX.Element {
               color="primary"
               size="small"
               startIcon={<AddIcon />}
+              onClick={handleToggleModal}
             >
               Novo Usuário
             </Button>
           </Hidden>
 
           <Hidden smUp>
-            <Button variant="contained" size="small">
+            <Button
+              variant="contained"
+              size="small"
+              onClick={handleToggleModal}
+            >
               <AddIcon fontSize="small" />
             </Button>
           </Hidden>
+
+          <Modal open={open} onClose={handleToggleModal} />
         </Box>
 
         <Search>
